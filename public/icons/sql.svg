@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="dbGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a90e2"/>
+      <stop offset="50%" style="stop-color:#357abd"/>
+      <stop offset="100%" style="stop-color:#2c5aa0"/>
+    </linearGradient>
+    <linearGradient id="topGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7bb3f0"/>
+      <stop offset="100%" style="stop-color:#4a90e2"/>
+    </linearGradient>
+    <radialGradient id="highlight" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#ffffff" stop-opacity="0.3"/>
+      <stop offset="100%" style="stop-color:#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Database cylinder body -->
+  <ellipse cx="50" cy="85" rx="35" ry="8" fill="url(#dbGradient)"/>
+  <rect x="15" y="25" width="70" height="60" fill="url(#dbGradient)"/>
+  <ellipse cx="50" cy="25" rx="35" ry="8" fill="url(#topGradient)"/>
+  
+  <!-- Database layer separators -->
+  <ellipse cx="50" cy="40" rx="35" ry="8" fill="none" stroke="#2c5aa0" stroke-width="1.5" opacity="0.7"/>
+  <ellipse cx="50" cy="55" rx="35" ry="8" fill="none" stroke="#2c5aa0" stroke-width="1.5" opacity="0.7"/>
+  <ellipse cx="50" cy="70" rx="35" ry="8" fill="none" stroke="#2c5aa0" stroke-width="1.5" opacity="0.7"/>
+  
+  <!-- Data lines inside -->
+  <line x1="20" y1="32" x2="35" y2="32" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  <line x1="20" y1="47" x2="40" y2="47" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  <line x1="20" y1="62" x2="30" y2="62" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  <line x1="20" y1="77" x2="45" y2="77" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  
+  <line x1="45" y1="32" x2="55" y2="32" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  <line x1="50" y1="47" x2="70" y2="47" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  <line x1="40" y1="62" x2="65" y2="62" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  <line x1="55" y1="77" x2="80" y2="77" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  
+  <!-- SQL text -->
+  <text x="50" y="18" text-anchor="middle" fill="#2c5aa0" font-family="Arial, sans-serif" font-size="12" font-weight="bold">SQL</text>
+  
+  <!-- Highlight effect -->
+  <ellipse cx="50" cy="55" rx="35" ry="40" fill="url(#highlight)"/>
+  
+  <!-- Border -->
+  <ellipse cx="50" cy="25" rx="35" ry="8" fill="none" stroke="#2c5aa0" stroke-width="2"/>
+  <path d="M15 25 L15 85 Q15 93 50 93 Q85 93 85 85 L85 25" 
+        fill="none" stroke="#2c5aa0" stroke-width="2"/>
+</svg>

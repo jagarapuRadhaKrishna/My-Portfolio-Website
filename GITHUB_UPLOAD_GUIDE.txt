@@ -1,0 +1,42 @@
+🚀 GITHUB UPLOAD GUIDE - GUARANTEED TO WORK! 🚀
+
+STEP 1: DELETE YOUR EXISTING REPOSITORY
+1. Go to: https://github.com/jagarapuRadhaKrishna/My-Portfolio-Website
+2. Click "Settings" (top right)
+3. Scroll to bottom → "Delete this repository"
+4. Type the repository name to confirm
+5. Click "Delete this repository"
+
+STEP 2: CREATE NEW REPOSITORY
+1. Go to: https://github.com/new
+2. Repository name: My-Portfolio-Website
+3. Make it PUBLIC
+4. DO NOT add README, .gitignore, or license
+5. Click "Create repository"
+
+STEP 3: UPLOAD FILES ONE BY ONE
+1. In your new empty repository, click "creating a new file"
+2. Create these files by copy-pasting content:
+
+FILE 1: package.json
+- Click "creating a new file"
+- Name: package.json
+- Copy content from: C:\Users\radha\portfolio\package.json
+- Paste into GitHub
+- Commit
+
+FILE 2: index.html
+- Click "Add file" → "Create new file"  
+- Name: index.html
+- Copy content from: C:\Users\radha\portfolio\index.html
+- Paste into GitHub
+- Commit
+
+ALTERNATIVE - USE GITHUB DESKTOP:
+1. Download: https://desktop.github.com/
+2. Install and sign in
+3. Clone your repository
+4. Copy all your files to the cloned folder
+5. Commit and push through the app
+
+This method WILL work - no command line needed!
