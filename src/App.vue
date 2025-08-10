@@ -140,6 +140,22 @@ html, body {
   }
 }
 
+.main-content {
+  animation: fadeInContent 1s ease-out;
+  opacity: 1;
+}
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Simplified animations for better performance */
 @keyframes gradientShift {
   0%, 100% { background-position: 0% 50%; }
