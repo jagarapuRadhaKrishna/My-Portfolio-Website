@@ -4,7 +4,7 @@ A modern, responsive portfolio website built with Vue.js and Vite, showcasing my
 
 ## 🌟 Live Demo
 
-🔗 **[View Live Portfolio](https://jagarapuradhakrishna.github.io/My-Portfolio-Website/)**
+🔗 **[View Live Portfolio](https://jrk-portfolio.netlify.app/)**
 
 ## 📋 Table of Contents
 
@@ -134,24 +134,45 @@ portfolio/
 
 ## 🚀 Deployment
 
-This portfolio is automatically deployed to GitHub Pages using GitHub Actions.
+This portfolio is configured for deployment on **Netlify** with automatic builds from GitHub.
 
-### Automatic Deployment
-Every push to the `main` branch triggers an automated build and deployment process.
+### Netlify Deployment (Recommended)
+
+1. **Connect GitHub Repository**:
+   - Go to [Netlify](https://www.netlify.com/)
+   - Click "New site from Git"
+   - Connect your GitHub account
+   - Select your repository: `jagarapuRadhaKrishna/My-Portfolio-Website`
+
+2. **Build Settings** (Auto-configured via netlify.toml):
+   - **Build command**: `npm run build`
+   - **Publish directory**: `dist`
+   - **Node version**: 18
+
+3. **Deploy**:
+   - Click "Deploy site"
+   - Your site will be available at: `https://your-site-name.netlify.app`
 
 ### Manual Deployment
 If you prefer manual deployment:
 
 ```bash
+npm run netlify:build
+```
+
+### GitHub Pages Alternative
+For GitHub Pages deployment:
+
+```bash
 npm run deploy
 ```
 
-### GitHub Pages Setup
-1. Go to your repository settings
-2. Navigate to "Pages" section
-3. Select "Deploy from a branch"
-4. Choose `gh-pages` branch
-5. Your site will be available at: `https://yourusername.github.io/My-Portfolio-Website/`
+### Build Configuration
+
+The project includes optimized configurations:
+- **netlify.toml**: Netlify-specific build settings and redirects
+- **_redirects**: SPA routing fallback
+- **Vite config**: Optimized for production builds
 
 ## 📱 Responsive Design
 
@@ -182,7 +203,7 @@ The portfolio is fully responsive and optimized for:
 - **GitHub**: [jagarapuRadhaKrishna](https://github.com/jagarapuRadhaKrishna)
 - **LinkedIn**: [Your LinkedIn Profile]
 - **Email**: [Your Email Address]
-- **Portfolio**: [Live Demo Link]
+- **Portfolio**: [https://jrk-portfolio.netlify.app/](https://jrk-portfolio.netlify.app/)
 
 ## 📄 License
 

@@ -67,7 +67,7 @@
       <hr class="footer-divider"/>
       <div class="text-center p-3 footer-bottom">
         © 2025 Radha Krishna Portfolio | Made with 
-        <a href="https://github.com/jagarapuRadhaKrishna/Portfolio" class="portfolio-link">Vue.js</a>
+        <a href="https://jrk-portfolio.netlify.app/" class="portfolio-link">Vue.js</a>
       </div>
     </footer>
   </div>
