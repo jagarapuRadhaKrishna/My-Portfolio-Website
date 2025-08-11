@@ -201,8 +201,8 @@ The portfolio is fully responsive and optimized for:
 ## 🔗 Connect With Me
 
 - **GitHub**: [jagarapuRadhaKrishna](https://github.com/jagarapuRadhaKrishna)
-- **LinkedIn**: [Your LinkedIn Profile]
-- **Email**: [Your Email Address]
+- **LinkedIn**: https://www.linkedin.com/in/jagarapuradhakrishna?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_ap
+- **Email**: radhakrishna02256@gmail.com
 - **Portfolio**: [https://jrk-portfolio.netlify.app/](https://jrk-portfolio.netlify.app/)
 
 ## 📄 License
