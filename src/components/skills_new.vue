@@ -3,7 +3,7 @@
     <section id="practicle_skills">
       <Heading :title="'Technical Skills'" :subtitle="'Explore My'" />
       <div class="container">
-        <!-- Icons Section -->
+        <!-- Ic        'java-python': { src: '/certificates/java-python-datapro.jpg', title: 'Java & Python', issuer: 'Datapro' }ns Section -->
         <div class="icons-section">
           <div
             v-for="(skill, index) in iconSkills"
@@ -112,6 +112,24 @@
             </div>
           </div>
 
+          <!-- New Certification Card: Java & Python by Datapro -->
+          <div class="certification-card">
+            <div class="cert-image-container">
+              <img 
+                src="/certificates/java-python-datapro.jpg" 
+                alt="Java & Python Certificate" 
+                class="cert-image" 
+                @error="handleCertificateError"
+                @load="handleImageLoad"
+                @click="openCertificateModal('java-python')"
+              />
+            </div>
+            <div class="cert-info">
+              <h3 class="cert-title">Java & Python</h3>
+              <p class="cert-issuer">Datapro</p>
+            </div>
+          </div>
+
           <!-- Second Row - Only Google Analytics -->
           <div class="certification-card">
             <div class="cert-image-container">
@@ -175,10 +193,11 @@ export default {
       showCertModal: false,
       currentCertificate: null,
       certificates: {
-        java: { src: '/java-cert.png', title: 'Java SpringBoot', issuer: 'Infosys Springboard' },
-        software: { src: '/software-dev-cert.jpg', title: 'Software Development', issuer: 'Citi' },
-        data: { src: '/data-analytics-cert.jpg', title: 'Data Analytics', issuer: 'Deloitte' },
-        google: { src: '/google-analytics-cert.jpg', title: 'Google Analytics', issuer: 'Google' }
+  java: { src: '/java-cert.png', title: 'Java SpringBoot', issuer: 'Infosys Springboard' },
+  software: { src: '/software-dev-cert.jpg', title: 'Software Development', issuer: 'Citi' },
+  data: { src: '/data-analytics-cert.jpg', title: 'Data Analytics', issuer: 'Deloitte' },
+  google: { src: '/google-analytics-cert.jpg', title: 'Google Analytics', issuer: 'Google' },
+  'java-python': { src: '/certificates/java-python-datapro.png', title: 'Java & Python', issuer: 'Datapro' }
       }
     };
   },
@@ -200,7 +219,7 @@ export default {
     getSkillsByCategory(categories) {
       return this.skills.filter(skill => categories.includes(skill.category));
     },
-    handleImageError(event) {
+  handleImageError(event) {
       // Try to fallback to SVG version first, then hide
       const img = event.target;
       const currentSrc = img.src;
@@ -217,6 +236,16 @@ export default {
           fallback.style.display = 'inline-block';
         }
       }
+    },
+    openCertificateModal(certKey) {
+      if (this.certificates[certKey]) {
+        this.currentCertificate = this.certificates[certKey];
+        this.showCertModal = true;
+      }
+    },
+    closeCertificateModal() {
+      this.showCertModal = false;
+      this.currentCertificate = null;
     },
     getIconEmoji(category) {
       const emojiMap = {

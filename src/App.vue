@@ -1,5 +1,6 @@
 <template>
   <div id="app" :class="{ 'dark-mode': darkMode }">
+    <JrkPortfolioAnimation />
     <Nav />
     <Summary />
     <About />
@@ -23,10 +24,12 @@ import Contact from "./components/contact.vue";
 import WriteMe from "./components/writeMe.vue";
 import ChatBot from "./components/features/chatbot.vue";
 import CanvasAnimation from "./components/features/canvas.vue";
+import JrkPortfolioAnimation from "./components/features/jrkPortfolioAnimation_minimal.vue";
 import AOS from "aos";
 
 export default {
   components: {
+    JrkPortfolioAnimation,
     Nav,
     Summary,
     About,
