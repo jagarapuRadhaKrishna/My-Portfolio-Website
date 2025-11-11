@@ -1,49 +1,137 @@
 <template>
-  <div id="navigation" class="py-1 shadow nav modern-nav">
-    <div class="container-fluid px-3 d-flex justify-content-between align-items-center">
-      <h2 class="portfolio-title-nav">MY PORTFOLIO</h2>
-      <ul class="d-flex mb-0 nav-links">
-        <li class="p-2 scroll-to nav-item" @click="scrollToSection('summary')">Home</li>
-        <li class="p-2 scroll-to nav-item" @click="scrollToSection('about')">About</li>
-        <li class="p-2 scroll-to nav-item" @click="scrollToSection('practicle_skills')">Skills</li>
-        <li class="p-2 scroll-to nav-item" @click="scrollToSection('projects')">Projects</li>
-        <li class="p-2 scroll-to nav-item" @click="scrollToSection('contact')">Contact</li>
+  <nav id="navigation" class="modern-nav">
+    <div class="container-fluid px-4">
+      <div class="nav-wrapper">
+        <div class="logo-section">
+          <h2 class="logo-text" @click="scrollToSection('summary')">
+            <span class="logo-icon">RK</span>
+            <span class="logo-divider">|</span>
+            <span class="logo-name">Portfolio</span>
+          </h2>
+        </div>
 
-        <li class="pt-2 pl-3">
-          <input type="checkbox" class="checkbox" id="checkbox" v-model="darkMode" @change="toggleDarkMode()">
-          <label for="checkbox" class="checkbox-label">
-            <i class="fas fa-moon"></i>
-            <i class="fas fa-sun"></i>
-            <span class="ball"></span>
-          </label>
+        <div class="nav-center">
+          <ul class="nav-links">
+            <li class="nav-item" :class="{ active: activeSection === 'summary' }" @click="scrollToSection('summary')">
+              <span class="nav-text">Home</span>
+              <span class="nav-indicator"></span>
+            </li>
+            <li class="nav-item" :class="{ active: activeSection === 'about' }" @click="scrollToSection('about')">
+              <span class="nav-text">About</span>
+              <span class="nav-indicator"></span>
+            </li>
+            <li class="nav-item" :class="{ active: activeSection === 'practicle_skills' }" @click="scrollToSection('practicle_skills')">
+              <span class="nav-text">Skills</span>
+              <span class="nav-indicator"></span>
+            </li>
+            <li class="nav-item" :class="{ active: activeSection === 'projects' }" @click="scrollToSection('projects')">
+              <span class="nav-text">Projects</span>
+              <span class="nav-indicator"></span>
+            </li>
+            <li class="nav-item" :class="{ active: activeSection === 'contact' }" @click="scrollToSection('contact')">
+              <span class="nav-text">Contact</span>
+              <span class="nav-indicator"></span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-actions">
+          <button class="theme-toggle" @click="toggleDarkMode()">
+            <i class="fas fa-moon" v-if="!darkMode"></i>
+            <i class="fas fa-sun" v-if="darkMode"></i>
+          </button>
+          <button class="mobile-menu-toggle" @click="toggleMobileMenu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-nav" :class="{ active: mobileMenuOpen }">
+      <ul class="mobile-nav-links">
+        <li class="mobile-nav-item" @click="scrollToSection('summary'); toggleMobileMenu()">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </li>
+        <li class="mobile-nav-item" @click="scrollToSection('about'); toggleMobileMenu()">
+          <i class="fas fa-user"></i>
+          <span>About</span>
+        </li>
+        <li class="mobile-nav-item" @click="scrollToSection('practicle_skills'); toggleMobileMenu()">
+          <i class="fas fa-code"></i>
+          <span>Skills</span>
+        </li>
+        <li class="mobile-nav-item" @click="scrollToSection('projects'); toggleMobileMenu()">
+          <i class="fas fa-briefcase"></i>
+          <span>Projects</span>
+        </li>
+        <li class="mobile-nav-item" @click="scrollToSection('contact'); toggleMobileMenu()">
+          <i class="fas fa-envelope"></i>
+          <span>Contact</span>
         </li>
       </ul>
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>
-
 export default {
   data() {
     return {
       darkMode: sessionStorage.getItem('darkMode') === 'true',
+      activeSection: 'summary',
+      mobileMenuOpen: false,
     };
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
     toggleDarkMode() {
+      this.darkMode = !this.darkMode;
       sessionStorage.setItem('darkMode', this.darkMode.toString());
 
       if (this.darkMode) {
-        $('#app').addClass('dark-mode');
+        document.getElementById('app').classList.add('dark-mode');
       } else {
-        $('#app').removeClass('dark-mode');
+        document.getElementById('app').classList.remove('dark-mode');
       }
     },
     scrollToSection(sectionId) {
+      this.activeSection = sectionId;
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
+      }
+    },
+    toggleMobileMenu() {
+      this.mobileMenuOpen = !this.mobileMenuOpen;
+      if (this.mobileMenuOpen) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    },
+    handleScroll() {
+      const sections = ['summary', 'about', 'practicle_skills', 'projects', 'contact'];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const height = element.offsetHeight;
+
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + height) {
+            this.activeSection = sectionId;
+            break;
+          }
+        }
       }
     }
   },
@@ -51,222 +139,291 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
 .modern-nav {
-  background: rgba(0, 0, 0, 0.95) !important;
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(10, 10, 20, 0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
-}
-
-.portfolio-title-nav {
-  font-family: 'Orbitron', monospace;
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-shadow: 
-    0 0 5px rgba(255, 255, 255, 0.3),
-    0 0 10px rgba(255, 255, 255, 0.2),
-    0 0 15px rgba(255, 255, 255, 0.1);
-  margin: 0;
-  display: inline-block;
+  padding: 1rem 0;
   transition: all 0.3s ease;
   
-  &:hover {
-    color: #ffffff;
-    text-shadow: 
-      0 0 5px rgba(255, 255, 255, 0.6),
-      0 0 10px rgba(255, 255, 255, 0.4),
-      0 0 15px rgba(255, 255, 255, 0.3),
-      0 0 20px rgba(255, 255, 255, 0.2);
-    transform: scale(1.02);
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.5), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover::before {
+    opacity: 1;
   }
 }
 
-@keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo-section {
+  .logo-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    
+    .logo-icon {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    
+    .logo-divider {
+      color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .logo-name {
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+    }
+    
+    &:hover {
+      transform: translateX(3px);
+      
+      .logo-icon {
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      }
+    }
+  }
+}
+
+.nav-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  
+  @media (max-width: 992px) {
+    display: none;
+  }
 }
 
 .nav-links {
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   margin: 0;
   padding: 0;
 }
 
 .nav-item {
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  color: #ffffff !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
-  padding: 6px 12px !important;
-  border-radius: 20px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
   transition: all 0.3s ease;
   position: relative;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  overflow: hidden;
+  
+  .nav-text {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .nav-indicator {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 20px;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+  }
   
   &::before {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: #ffffff;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
+    inset: 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
   
   &:hover {
-    color: #000000 !important;
-    text-decoration: none;
-    transform: translateY(-2px);
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 1);
     
     &::before {
-      width: 80%;
+      opacity: 1;
     }
   }
   
-  &:active {
-    transform: translateY(0);
+  &.active {
+    color: rgba(255, 255, 255, 1);
+    background: rgba(255, 255, 255, 0.08);
+    
+    .nav-indicator {
+      transform: translateX(-50%) scaleX(1);
+    }
   }
 }
 
-.checkbox {
-  opacity: 0;
-  position: absolute;
-}
-
-.checkbox-label {
-  background: linear-gradient(45deg, #2c3e50, #34495e);
-  width: 45px;
-  height: 25px;
-  border-radius: 50px;
-  position: relative;
-  padding: 2px;
-  cursor: pointer;
+.nav-actions {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  gap: 1rem;
+}
+
+.theme-toggle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   transition: all 0.3s ease;
-  margin-left: 0.3rem;
-  
-  &:hover {
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-  }
-  
-  .ball {
-    background: linear-gradient(45deg, #ffffff, #f0f0f0);
-    width: 19px;
-    height: 19px;
-    position: absolute;
-    left: 2px;
-    top: 2px;
-    border-radius: 50%;
-    transition: transform 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  }
+  color: rgba(255, 255, 255, 0.8);
   
   i {
-    font-size: 0.7rem;
-    z-index: 2;
+    font-size: 1.1rem;
+  }
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: rotate(15deg) scale(1.1);
+  }
+}
+
+.mobile-menu-toggle {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  .hamburger-line {
+    width: 20px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
     transition: all 0.3s ease;
   }
-}
-
-.fa-moon {
-  color: #f1c40f;
-  margin-left: 4px;
-}
-
-.fa-sun {
-  color: #f39c12;
-  margin-right: 4px;
-}
-
-.checkbox:checked + .checkbox-label {
-  background: linear-gradient(45deg, #e74c3c, #c0392b);
   
-  .ball {
-    transform: translateX(25px);
-    background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  @media (max-width: 992px) {
+    display: flex;
   }
 }
 
-// Mobile responsive
-@media screen and (max-width: 768px) {
-  .modern-nav {
-    padding: 0.5rem 0 !important;
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background: rgba(10, 10, 20, 0.98);
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6rem 2rem 2rem;
+  transition: right 0.3s ease;
+  z-index: 999;
+  overflow-y: auto;
+  
+  &.active {
+    right: 0;
   }
   
-  .portfolio-title-nav {
-    font-size: 1.4rem;
-    letter-spacing: 1px;
-  }
-  
-  .nav-links {
-    gap: 0.5rem;
-  }
-  
-  .nav-item {
-    font-size: 0.9rem;
-    padding: 6px 12px !important;
-  }
-  
-  .checkbox-label {
-    width: 45px;
-    height: 25px;
-    
-    .ball {
-      width: 19px;
-      height: 19px;
-    }
-    
-    i {
-      font-size: 0.8rem;
-    }
-  }
-  
-  .checkbox:checked + .checkbox-label .ball {
-    transform: translateX(20px);
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .nav-item:nth-child(2),
-  .nav-item:nth-child(3) {
+  @media (min-width: 993px) {
     display: none;
   }
+}
+
+.mobile-nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
   
-  .portfolio-title-nav {
+  i {
     font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+    color: #667eea;
   }
   
-  .nav-item {
-    font-size: 0.8rem;
-    padding: 4px 8px !important;
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 1);
+    transform: translateX(5px);
   }
 }
 
-// Add some top margin to body to account for fixed nav
-body {
-  padding-top: 80px;
+@media screen and (max-width: 768px) {
+  .modern-nav {
+    padding: 0.75rem 0;
+  }
+  
+  .logo-section .logo-text {
+    font-size: 1.2rem;
+    
+    .logo-icon {
+      padding: 0.3rem 0.6rem;
+    }
+  }
 }
 </style>

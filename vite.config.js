@@ -9,4 +9,16 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
   },
+  server: {
+    host: '0.0.0.0',
+    port: 5000,
+    hmr: {
+      clientPort: 443,
+      protocol: 'wss'
+    }
+  },
+  preview: {
+    host: '0.0.0.0',
+    port: 5000
+  }
 })

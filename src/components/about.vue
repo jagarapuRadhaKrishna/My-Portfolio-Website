@@ -1,30 +1,55 @@
 <template>
-  <section id="about" class="about-wrapper">
-    <Heading :title="'About Me'" :subtitle="'Want to know me'" />
-
-    <!-- Professional Experience -->
-    <div class="sub-section">
-  <h3 class="sub-title heading-like">Professional Experience</h3>
-      <div class="chips">
-        <div class="experience-chip" v-for="item in experience" :key="item.role">
-          <div class="chip-title">{{ item.role }}</div>
-          <div class="chip-meta">{{ item.dates }}</div>
-          <ul class="chip-points">
-            <li v-for="(p,i) in item.points" :key="i">{{ p }}</li>
-          </ul>
-        </div>
+  <section id="about" class="about-modern">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Passion. Code. Impact.</p>
       </div>
-    </div>
 
-    <!-- Education -->
-    <div class="sub-section">
-  <h3 class="sub-title heading-like">Education</h3>
-      <div class="chips">
-        <div class="education-chip" v-for="edu in education" :key="edu.institution">
-          <div class="chip-title">{{ edu.institution }}</div>
-          <div class="chip-meta">{{ edu.dates }}</div>
-          <div class="chip-degree">{{ edu.degree }}</div>
-          <div class="chip-extra" v-if="edu.coursework">Relevant Coursework: {{ edu.coursework }}</div>
+      <div class="about-content">
+        <div class="experience-section" data-aos="fade-right">
+          <div class="section-label">
+            <i class="fas fa-briefcase"></i>
+            <h3>Professional Journey</h3>
+          </div>
+          
+          <div class="timeline">
+            <div class="timeline-item" v-for="(item, index) in experience" :key="item.role" :data-aos-delay="100 * index" data-aos="fade-up">
+              <div class="timeline-marker"></div>
+              <div class="timeline-content">
+                <div class="timeline-header">
+                  <h4 class="timeline-title">{{ item.role }}</h4>
+                  <span class="timeline-date">{{ item.dates }}</span>
+                </div>
+                <ul class="timeline-points">
+                  <li v-for="(p,i) in item.points" :key="i">{{ p }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="education-section" data-aos="fade-left">
+          <div class="section-label">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Education</h3>
+          </div>
+          
+          <div class="education-cards">
+            <div class="education-card" v-for="(edu, index) in education" :key="edu.institution" :data-aos-delay="100 * index" data-aos="zoom-in">
+              <div class="education-icon">
+                <i class="fas fa-university"></i>
+              </div>
+              <div class="education-info">
+                <h4 class="education-institution">{{ edu.institution }}</h4>
+                <p class="education-degree">{{ edu.degree }}</p>
+                <span class="education-dates">{{ edu.dates }}</span>
+                <p class="education-coursework" v-if="edu.coursework">
+                  <i class="fas fa-book"></i> {{ edu.coursework }}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -87,42 +112,290 @@ export default {
 }
 </script>
 
-<style scoped>
-.about-wrapper { 
-  padding: 1rem 0; /* Further reduced padding */
-  padding-left: 48px; /* Half inch gap from corner */
-  padding-right: 48px; /* Half inch gap from corner */
+<style scoped lang="scss">
+
+.about-modern {
+  padding: 6rem 2rem 4rem;
+  background: transparent;
+  position: relative;
 }
-.sub-section { 
-  margin-top: 1rem; /* Further reduced gap between sections */
-  max-width: 760px; /* Same width as experience chips */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
-.sub-title { color:#4ECDC4; font-size:1.5rem; font-weight:700; margin:0 0 0.85rem; text-align:left; letter-spacing:1px; }
-.heading-like { font-family:'Orbitron', 'Helvetica', sans-serif; text-transform:uppercase; background:linear-gradient(45deg,#ffffff,#d7d7d7); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent; position:relative; }
-.heading-like:after { content:''; position:absolute; bottom:-6px; left:0; width:70px; height:3px; background:linear-gradient(45deg,rgba(255,255,255,0.8),rgba(255,255,255,0.4)); border-radius:2px; }
 
-/* Experience chips */
-.chips { display:grid; gap:0.6rem; max-width:760px; }
-.experience-chip { background:rgba(255,255,255,0.05); border:1px solid rgba(78,205,196,.3); border-radius:12px; padding:0.75rem 0.9rem; backdrop-filter:blur(10px); transition:.25s; }
-.experience-chip:hover { background:rgba(255,255,255,0.12); border-color:rgba(78,205,196,.55); }
-.chip-title { font-weight:600; color:#fff; font-size:1rem; margin:0 0 0.15rem; line-height:1.2; } /* Increased font size */
-.chip-meta { font-size:1rem; letter-spacing:.4px; text-transform:uppercase; color:#4ECDC4; font-weight:600; margin-bottom:0.3rem; } /* Increased font size */
-.chip-points { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.3rem; }
-.chip-points li { position:relative; padding-left:0.75rem; font-size:1rem; line-height:1.3; color:rgba(255,255,255,.85); } /* Increased font size */
-.chip-points li:before { content:'•'; position:absolute; left:0; color:#4ECDC4; }
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+  
+  .section-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+  }
+}
 
-/* Education - same styling as experience */
-.education-chip { background:rgba(255,255,255,0.05); border:1px solid rgba(78,205,196,.3); border-radius:12px; padding:0.75rem 0.9rem; backdrop-filter:blur(10px); transition:.25s; }
-.education-chip:hover { background:rgba(255,255,255,0.12); border-color:rgba(78,205,196,.55); }
-.chip-degree { color:rgba(255,255,255,.9); font-size:1rem; margin-top:0.35rem; line-height:1.3; }
-.chip-extra { color:rgba(255,255,255,.75); font-size:1rem; margin-top:0.4rem; line-height:1.35; }
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
 
-@media (max-width:650px){
-  .sub-title { font-size:1.3rem; }
-  .chip-points li, .chip-degree, .chip-extra { font-size:1rem; }
-  .about-wrapper {
-    padding-left: 20px; /* Reduced padding on mobile */
-    padding-right: 20px;
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  
+  i {
+    font-size: 1.8rem;
+    color: #667eea;
+  }
+  
+  h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+  }
+}
+
+.timeline {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #667eea, #764ba2);
+  }
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 60px;
+  margin-bottom: 2.5rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  
+  .timeline-marker {
+    position: absolute;
+    left: 14px;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    background: #667eea;
+    border: 3px solid rgba(10, 10, 20, 1);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+  }
+  
+  .timeline-content {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(102, 126, 234, 0.3);
+      transform: translateX(5px);
+    }
+  }
+  
+  .timeline-header {
+    margin-bottom: 1rem;
+    
+    .timeline-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.95);
+      margin: 0 0 0.5rem;
+      line-height: 1.4;
+    }
+    
+    .timeline-date {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: #667eea;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+  
+  .timeline-points {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.7);
+      line-height: 1.6;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+      position: relative;
+      
+      &::before {
+        content: '▹';
+        position: absolute;
+        left: 0;
+        color: #667eea;
+        font-size: 1.2rem;
+      }
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.education-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.education-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(102, 126, 234, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+  }
+  
+  .education-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    
+    i {
+      font-size: 1.8rem;
+      color: #fff;
+    }
+  }
+  
+  .education-info {
+    flex: 1;
+    
+    .education-institution {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.95);
+      margin: 0 0 0.5rem;
+    }
+    
+    .education-degree {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin: 0 0 0.5rem;
+      line-height: 1.5;
+    }
+    
+    .education-dates {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: #667eea;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .education-coursework {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin: 1rem 0 0;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      
+      i {
+        color: #667eea;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about-modern {
+    padding: 4rem 1.5rem 3rem;
+  }
+  
+  .section-header {
+    margin-bottom: 3rem;
+    
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .section-subtitle {
+      font-size: 1rem;
+    }
+  }
+  
+  .section-label h3 {
+    font-size: 1.5rem;
+  }
+  
+  .education-card {
+    flex-direction: column;
+    
+    .education-icon {
+      width: 50px;
+      height: 50px;
+      
+      i {
+        font-size: 1.5rem;
+      }
+    }
   }
 }
 </style>
