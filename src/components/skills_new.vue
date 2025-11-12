@@ -792,49 +792,59 @@ export default {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 140px));
+  gap: 3rem 2rem;
+  justify-content: center;
+  align-items: start;
   
   .skill-card {
     background: transparent;
     backdrop-filter: none;
     border: none;
     border-radius: 0;
-    padding: 1.5rem;
+    padding: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    transition: all 0.3s ease;
+    gap: 0.8rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
     
     &:hover {
       background: transparent;
       border-color: transparent;
-      transform: translateY(-5px);
+      transform: translateY(-10px);
       box-shadow: none;
     }
     
     .skill-icon-wrapper {
-      width: 60px;
-      height: 60px;
+      width: 80px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: transparent;
       border-radius: 0;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.3));
     }
     
     &:hover .skill-icon-wrapper {
       background: transparent;
-      transform: scale(1.15);
+      transform: scale(1.2) rotate(5deg);
+      filter: drop-shadow(0 8px 24px rgba(102, 126, 234, 0.6));
     }
     
     .skill-icon-img {
-      width: 40px;
-      height: 40px;
+      width: 70px;
+      height: 70px;
       object-fit: contain;
+      filter: brightness(1.1) contrast(1.1);
+      transition: all 0.4s ease;
+    }
+    
+    &:hover .skill-icon-img {
+      filter: brightness(1.3) contrast(1.2);
     }
     
     .skill-info {
@@ -843,17 +853,25 @@ export default {
       .skill-title {
         font-family: 'Inter', sans-serif;
         font-size: 1rem;
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.95);
+        font-weight: 700;
+        color: #ffffff;
         margin: 0;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+        transition: all 0.3s ease;
       }
       
       .skill-subtitle {
         font-family: 'Inter', sans-serif;
-        font-size: 0.85rem;
-        color: rgba(255, 255, 255, 0.6);
-        margin-top: 0.5rem;
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 0.3rem;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
       }
+    }
+    
+    &:hover .skill-title {
+      color: #667eea;
+      transform: scale(1.05);
     }
   }
 }
