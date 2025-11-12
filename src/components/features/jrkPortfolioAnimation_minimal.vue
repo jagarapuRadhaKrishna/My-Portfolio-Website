@@ -62,7 +62,7 @@ export default {
     // Auto-hide after animation completes
     setTimeout(() => {
       this.show = false;
-    }, 2800);
+    }, 500);
   },
   methods: {
     startLoadingSequence() {

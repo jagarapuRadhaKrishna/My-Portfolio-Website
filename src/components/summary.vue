@@ -505,6 +505,8 @@ export default {
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
+  position: relative;
+  z-index: 100;
 }
 
 .social-icon {
@@ -520,6 +522,9 @@ export default {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 100;
   
   i {
     font-size: 1.3rem;
@@ -527,6 +532,7 @@ export default {
     transition: all 0.3s ease;
     position: relative;
     z-index: 2;
+    pointer-events: none;
   }
   
   .tooltip {
