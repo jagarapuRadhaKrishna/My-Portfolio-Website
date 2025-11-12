@@ -1,161 +1,114 @@
 <template>
-  <div class="skills-wrapper">
-    <section id="practicle_skills">
-      <Heading :title="'Technical Skills'" :subtitle="'Explore My'" />
+  <div class="skills-certifications-wrapper">
+    <section id="practicle_skills" class="skills-modern">
       <div class="container">
-        <!-- Ic        'java-python': { src: '/certificates/java-python-datapro.jpg', title: 'Java & Python', issuer: 'Datapro' }ns Section -->
-        <div class="icons-section">
-          <div
-            v-for="(skill, index) in iconSkills"
-            :key="skill.name || index"
-            class="icon-item"
-          >
-            <img
-              v-if="skill.hasIcon"
-              :src="`/icons/${skill.imageSrc}.${skill.extension || 'png'}`"
-              class="skill-image"
-              @error="handleImageError"
-              :alt="skill.name"
-            />
-            <span
-              v-else
-              class="skill-icon-fallback"
-            >
-              {{ getIconEmoji(skill.category) }}
-            </span>
-            <span class="skill-name">{{ skill.name }}</span>
-            <span v-if="skill.subtitle" class="skill-subtitle">{{ skill.subtitle }}</span>
-          </div>
+        <div class="section-header" data-aos="fade-up">
+          <h2 class="section-title">Technical Skills</h2>
+          <p class="section-subtitle">Building the Future with Modern Technology</p>
         </div>
 
-        <!-- Card Skills Section -->
-        <div class="cards-section">
+        <div class="skills-grid">
           <div
-            v-for="(skill, index) in cardSkills"
+            v-for="(skill, index) in allSkills"
             :key="skill.name || index"
-            class="skill-card dark-card"
+            class="skill-card"
+            :data-aos="'zoom-in'"
+            :data-aos-delay="index * 50"
           >
-            <img
-              v-if="skill.hasIcon"
-              :src="`/icons/${skill.imageSrc}.${skill.extension || 'png'}`"
-              class="skill-image"
-              @error="handleImageError"
-              :alt="skill.name"
-            />
-            <span
-              v-else
-              class="skill-icon-fallback"
-            >
-              {{ getIconEmoji(skill.category) }}
-            </span>
-            <span class="skill-name">{{ skill.name }}</span>
-            <span v-if="skill.subtitle" class="skill-subtitle">{{ skill.subtitle }}</span>
+            <div class="skill-icon-wrapper">
+              <img
+                v-if="skill.hasIcon"
+                :src="`/icons/${skill.imageSrc}.${skill.extension || 'png'}`"
+                class="skill-icon-img"
+                @error="handleImageError"
+                :alt="skill.name"
+              />
+              <span v-else class="skill-icon-fallback">
+                {{ getIconEmoji(skill.category) }}
+              </span>
+            </div>
+            <div class="skill-info">
+              <h3 class="skill-title">{{ skill.name }}</h3>
+              <p v-if="skill.subtitle" class="skill-subtitle">{{ skill.subtitle }}</p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications-section">
-      <Heading :title="'Certifications'" :subtitle="'Professional'" />
-      <div class="container">
-        <div class="certifications-grid">
-          <!-- First Row - Java SpringBoot & Software Development -->
-          <div class="certification-card">
-            <div class="cert-image-container">
-              <img 
-                src="/java-cert.png" 
-                alt="Java SpringBoot Certificate" 
-                class="cert-image" 
-                @error="handleCertificateError"
-                @load="handleImageLoad"
-                @click="openCertificateModal('java')"
-              />
-            </div>
-            <div class="cert-info">
-              <h3 class="cert-title">Java SpringBoot</h3>
-              <p class="cert-issuer">Infosys Springboard</p>
-            </div>
-          </div>
+    <section id="certifications" class="certifications-modern">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <h2 class="section-title">Certifications</h2>
+        <p class="section-subtitle">Professional Recognition & Achievements</p>
+      </div>
 
-          <div class="certification-card">
-            <div class="cert-image-container">
-              <img 
-                src="/software-dev-cert.jpg" 
-                alt="Software Development Certificate" 
-                class="cert-image" 
-                @error="handleCertificateError"
-                @load="handleImageLoad"
-                @click="openCertificateModal('software')"
-              />
-            </div>
-            <div class="cert-info">
-              <h3 class="cert-title">Software Development</h3>
-              <p class="cert-issuer">Citi</p>
-            </div>
+      <div class="certifications-grid">
+        <div class="cert-card" data-aos="flip-left" data-aos-delay="0">
+          <div class="cert-badge">
+            <i class="fas fa-certificate"></i>
           </div>
-
-          <div class="certification-card">
-            <div class="cert-image-container">
-              <img 
-                src="/data-analytics-cert.jpg" 
-                alt="Data Analytics Certificate" 
-                class="cert-image" 
-                @error="handleCertificateError"
-                @load="handleImageLoad"
-                @click="openCertificateModal('data')"
-              />
-            </div>
-            <div class="cert-info">
-              <h3 class="cert-title">Data Analytics</h3>
-              <p class="cert-issuer">Deloitte</p>
-            </div>
+          <img src="/java-cert.png" alt="Java SpringBoot" class="cert-image" @click="openCertificateModal('java')" />
+          <div class="cert-content">
+            <h3 class="cert-title">Java SpringBoot</h3>
+            <p class="cert-issuer">Infosys Springboard</p>
           </div>
+        </div>
 
-          <!-- New Certification Card: Java & Python by Datapro -->
-          <div class="certification-card">
-            <div class="cert-image-container">
-              <img 
-                src="/certificates/java-python-datapro.jpg" 
-                alt="Java & Python Certificate" 
-                class="cert-image" 
-                @error="handleCertificateError"
-                @load="handleImageLoad"
-                @click="openCertificateModal('java-python')"
-              />
-            </div>
-            <div class="cert-info">
-              <h3 class="cert-title">Java & Python</h3>
-              <p class="cert-issuer">Datapro</p>
-            </div>
+        <div class="cert-card" data-aos="flip-left" data-aos-delay="100">
+          <div class="cert-badge">
+            <i class="fas fa-certificate"></i>
           </div>
+          <img src="/software-dev-cert.jpg" alt="Software Development" class="cert-image" @click="openCertificateModal('software')" />
+          <div class="cert-content">
+            <h3 class="cert-title">Software Development</h3>
+            <p class="cert-issuer">Citi</p>
+          </div>
+        </div>
 
-          <!-- Second Row - Only Google Analytics -->
-          <div class="certification-card">
-            <div class="cert-image-container">
-              <img 
-                src="/google-analytics-cert.jpg" 
-                alt="Google Analytics Certificate" 
-                class="cert-image" 
-                @error="handleCertificateError"
-                @load="handleImageLoad"
-                @click="openCertificateModal('google')"
-              />
-            </div>
-            <div class="cert-info">
-              <h3 class="cert-title">Google Analytics</h3>
-              <p class="cert-issuer">Google</p>
-            </div>
+        <div class="cert-card" data-aos="flip-left" data-aos-delay="200">
+          <div class="cert-badge">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <img src="/data-analytics-cert.jpg" alt="Data Analytics" class="cert-image" @click="openCertificateModal('data')" />
+          <div class="cert-content">
+            <h3 class="cert-title">Data Analytics</h3>
+            <p class="cert-issuer">Deloitte</p>
+          </div>
+        </div>
+
+        <div class="cert-card" data-aos="flip-left" data-aos-delay="300">
+          <div class="cert-badge">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <img src="/certificates/java-python-datapro.jpg" alt="Java & Python" class="cert-image" @click="openCertificateModal('java-python')" />
+          <div class="cert-content">
+            <h3 class="cert-title">Java & Python</h3>
+            <p class="cert-issuer">Datapro</p>
+          </div>
+        </div>
+
+        <div class="cert-card" data-aos="flip-left" data-aos-delay="400">
+          <div class="cert-badge">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <img src="/google-analytics-cert.jpg" alt="Google Analytics" class="cert-image" @click="openCertificateModal('google')" />
+          <div class="cert-content">
+            <h3 class="cert-title">Google Analytics</h3>
+            <p class="cert-issuer">Google</p>
           </div>
         </div>
       </div>
+    </div>
     </section>
 
     <!-- Certificate Modal -->
-    <div v-if="showCertModal && currentCertificate" class="certificate-modal-overlay" @click="closeCertificateModal">
-      <div class="certificate-modal-content" @click.stop>
-        <button class="modal-close-btn" @click="closeCertificateModal">&times;</button>
-        <img :src="currentCertificate.src" :alt="`${currentCertificate.title} Certificate - Full View`" class="modal-cert-image" />
+    <div v-if="showCertModal && currentCertificate" class="cert-modal-overlay" @click="closeCertificateModal">
+      <div class="cert-modal-content" @click.stop>
+        <button class="modal-close" @click="closeCertificateModal">
+          <i class="fas fa-times"></i>
+        </button>
+        <img :src="currentCertificate.src" :alt="`${currentCertificate.title} - Full View`" class="modal-image" />
       </div>
     </div>
   </div>
@@ -202,6 +155,9 @@ export default {
     };
   },
   computed: {
+    allSkills() {
+      return this.skills;
+    },
     iconSkills() {
       return this.skills.filter(skill => this.isNoBackgroundSkill(skill.name));
     },
@@ -798,6 +754,252 @@ export default {
 @keyframes scaleIn {
   from { transform: scale(0.8); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
+}
+
+/* Modern Skills & Certifications Styles */
+.skills-modern, .certifications-modern {
+  padding: 6rem 2rem 4rem;
+  background: transparent;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+  
+  .section-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 500;
+  }
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+  
+  .skill-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(102, 126, 234, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+    }
+    
+    .skill-icon-wrapper {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(102, 126, 234, 0.1);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    
+    &:hover .skill-icon-wrapper {
+      background: rgba(102, 126, 234, 0.2);
+      transform: scale(1.1);
+    }
+    
+    .skill-icon-img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+    }
+    
+    .skill-info {
+      text-align: center;
+      
+      .skill-title {
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.95);
+        margin: 0;
+      }
+      
+      .skill-subtitle {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  
+  .cert-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    .cert-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      i {
+        color: #fff;
+        font-size: 1.2rem;
+      }
+    }
+    
+    .cert-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .cert-content {
+      .cert-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.95);
+        margin-bottom: 0.5rem;
+      }
+      
+      .cert-issuer {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        color: #667eea;
+        font-weight: 500;
+      }
+    }
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(102, 126, 234, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+      
+      .cert-image {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+.cert-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.cert-modal-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  animation: scaleIn 0.3s ease;
+  
+  .modal-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #fff;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: rotate(90deg);
+    }
+  }
+  
+  .modal-image {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: 12px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-modern, .certifications-modern {
+    padding: 4rem 1.5rem 3rem;
+  }
+  
+  .section-header .section-title {
+    font-size: 2rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+  
+  .certifications-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
 
