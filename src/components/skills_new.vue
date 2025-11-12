@@ -884,13 +884,13 @@ export default {
   gap: 2rem;
   
   .cert-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 1.5rem;
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     transition: all 0.3s ease;
     cursor: pointer;
     
@@ -939,13 +939,14 @@ export default {
     }
     
     &:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(102, 126, 234, 0.3);
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+      background: transparent;
+      border-color: transparent;
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(102, 126, 234, 0.4);
       
       .cert-image {
-        transform: scale(1.05);
+        transform: scale(1.08);
+        filter: brightness(1.1);
       }
     }
   }
