@@ -115,7 +115,7 @@ export default {
 <style scoped lang="scss">
 
 .about-modern {
-  padding: 6rem 2rem 4rem;
+  padding: 5rem 5rem 5rem;
   background: transparent;
   position: relative;
 }

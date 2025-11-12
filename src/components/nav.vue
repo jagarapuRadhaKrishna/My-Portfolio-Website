@@ -141,9 +141,9 @@ export default {
 <style lang="scss" scoped>
 
 .modern-nav {
-  background: rgba(10, 10, 20, 0.8);
-  backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: none;
+  backdrop-filter: none;
+  border-bottom: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -360,7 +360,7 @@ export default {
   right: -100%;
   width: 280px;
   height: 100vh;
-  background: rgba(10, 10, 20, 0.98);
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(20px);
   border-left: 1px solid rgba(255, 255, 255, 0.1);
   padding: 6rem 2rem 2rem;

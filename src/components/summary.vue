@@ -3,7 +3,6 @@
     <div class="animated-background">
       <div class="gradient-orb orb-1"></div>
       <div class="gradient-orb orb-2"></div>
-      <div class="gradient-orb orb-3"></div>
     </div>
 
     <div class="container-fluid">
@@ -18,7 +17,7 @@
           <div class="main-title">
             <h1 class="name-title">
               <span class="hello-text">Hello, I'm</span>
-              <span class="name-highlight">Radha Krishna</span>
+              <span class="name-highlight">Jagarapu Radha Krishna</span>
             </h1>
           </div>
           
@@ -33,24 +32,7 @@
           </div>
 
           <p class="intro-para mt-4"> 
-            Crafting high-performance, scalable applications with expertise in 
-            <span class="tech-highlight">Python Django</span>, 
-            <span class="tech-highlight">Node.js</span>, 
-            <span class="tech-highlight">React</span>, 
-            <span class="tech-highlight">JavaScript (ES6+)</span>, 
-            <span class="tech-highlight">HTML/CSS</span>, 
-            <span class="tech-highlight">Bootstrap</span>, 
-            <span class="tech-highlight">Material UI</span>, 
-            <span class="tech-highlight">MySQL</span>, 
-            <span class="tech-highlight">MongoDB</span>, and 
-            <span class="tech-highlight">REST APIs</span>. 
-            Specializing in <span class="tech-highlight">Data Structures & Algorithms</span>, 
-            <span class="tech-highlight">System Design</span>, 
-            <span class="tech-highlight">Python Automations</span>, 
-            <span class="tech-highlight">ServiceNow</span>, and 
-            <span class="tech-highlight">IT Consultation</span>. 
-            Building AI-powered solutions with <span class="tech-highlight">Machine Learning</span> and 
-            <span class="tech-highlight">NLP</span> to deliver real-world impact through elegant, user-focused software.
+            A <span class="tech-highlight">Full Stack Engineer</span> specializing in <span class="tech-highlight">Python Django</span>, <span class="tech-highlight">Node.js</span>, and <span class="tech-highlight">React</span>. Expert in crafting scalable applications with <span class="tech-highlight">JavaScript</span>, <span class="tech-highlight">MySQL</span>, <span class="tech-highlight">MongoDB</span>, and modern UI frameworks. <span class="tech-highlight">Top 10% LeetCode</span> achiever with strong foundations in <span class="tech-highlight">DSA</span> and <span class="tech-highlight">System Design</span>. Building intelligent solutions through <span class="tech-highlight">Machine Learning</span>, <span class="tech-highlight">Python Automation</span>, and <span class="tech-highlight">ServiceNow</span> development.
           </p>
 
           <div class="stats-container">
@@ -158,7 +140,7 @@ export default {
 .gradient-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(120px);
   opacity: 0.6;
   animation: float 20s ease-in-out infinite;
 }
@@ -167,8 +149,8 @@ export default {
   width: 500px;
   height: 500px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  top: -100px;
-  left: -100px;
+  top: -200px;
+  left: -200px;
   animation-delay: 0s;
 }
 
@@ -176,19 +158,20 @@ export default {
   width: 400px;
   height: 400px;
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-  bottom: -100px;
-  right: -100px;
+  bottom: -200px;
+  right: -200px;
   animation-delay: -5s;
 }
 
 .orb-3 {
-  width: 450px;
-  height: 450px;
+  width: 350px;
+  height: 350px;
   background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   animation-delay: -10s;
+  opacity: 0.1;
 }
 
 @keyframes float {

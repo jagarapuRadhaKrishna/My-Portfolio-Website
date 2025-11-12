@@ -760,7 +760,7 @@ export default {
 
 /* Modern Skills & Certifications Styles */
 .skills-modern, .certifications-modern {
-  padding: 6rem 2rem 4rem;
+  padding: 6rem 6rem 6rem;
   background: transparent;
 }
 
@@ -771,7 +771,7 @@ export default {
 
 .section-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   
   .section-title {
     font-family: 'Space Grotesk', sans-serif;
@@ -797,7 +797,7 @@ export default {
   grid-template-columns: repeat(auto-fit, minmax(140px, 140px));
   gap: 4rem 2.5rem;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   
   .skill-card {
     background: transparent;
@@ -808,9 +808,11 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     gap: 0.8rem;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
+    min-height: 150px;
     
     &:hover {
       background: transparent;
