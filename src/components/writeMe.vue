@@ -116,6 +116,8 @@ export default {
   background: #000000;
   min-height: 100vh;
   scroll-snap-align: start;
+  position: relative;
+  z-index: 1;
 }
 
 .container {

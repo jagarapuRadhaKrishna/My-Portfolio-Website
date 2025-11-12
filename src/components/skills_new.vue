@@ -795,7 +795,7 @@ export default {
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 140px));
-  gap: 4rem 2.5rem;
+  gap: 2.5rem 2.5rem;
   justify-content: center;
   align-items: start;
   

@@ -28,17 +28,19 @@
     </section>
 
     <!-- Project Details Modal -->
-    <div v-if="showModal" class="project-modal-overlay" @click="closeProjectModal">
-      <div class="project-modal-content" @click.stop>
-        <button class="modal-close-btn" @click="closeProjectModal">
-          <i class="fa-solid fa-times"></i>
-        </button>
-        
-        <div class="modal-header">
-          <h2 class="project-modal-title">NXT-Hire - AI-Powered Career Platform</h2>
-        </div>
-        
-        <div class="modal-body">
+    <transition name="modal-fade">
+      <div v-if="showModal" class="project-modal-wrapper">
+        <div class="project-modal-overlay" @click="closeProjectModal">
+          <div class="project-modal-content" @click.stop>
+            <button class="modal-close-btn" @click="closeProjectModal">
+              <i class="fa-solid fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+              <h2 class="project-modal-title">NXT-Hire - AI-Powered Career Platform</h2>
+            </div>
+            
+            <div class="modal-body">
           <div class="project-links mb-4">
             <a href="https://github.com/jagarapuRadhaKrishna/NXT-Hire-" target="_blank" class="modal-btn me-3">
               <i class="fa-brands fa-github mr-2"></i>GitHub Repository
@@ -91,9 +93,11 @@
               <p>OpenAI GPT-4, Google Gemini APIs</p>
             </div>
           </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </transition>
   </section>
 </template>
 
@@ -119,10 +123,16 @@
       openProjectModal() {
         this.showModal = true;
         document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
       },
       closeProjectModal() {
         this.showModal = false;
         document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
       }
     }
   }
@@ -215,32 +225,57 @@
 }
 
 /* Project Modal Styles */
+.project-modal-wrapper {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 99999999 !important;
+  background: #000000 !important;
+}
+
 .project-modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.95); /* Darker overlay */
-  backdrop-filter: blur(15px); /* Increased blur */
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: #000000 !important;
+  backdrop-filter: none !important;
   display: flex;
   justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  padding: 20px;
+  align-items: flex-start;
+  z-index: 99999999 !important;
+  padding: 80px 20px 60px 20px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .project-modal-content {
-  background: rgba(10, 10, 10, 0.98); /* Much darker background */
+  background: rgba(10, 10, 10, 0.99);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
-  max-width: 700px; /* Reduced from 900px */
-  width: 90%; /* Reduced from 100% */
-  max-height: 80vh; /* Reduced from 90vh */
-  overflow-y: auto;
+  max-width: 700px;
+  width: 90%;
   position: relative;
-  backdrop-filter: blur(20px); /* Increased blur */
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8); /* Stronger shadow */
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+  margin: 0 auto 60px auto;
+  z-index: 1000000;
+  pointer-events: auto;
+}
+
+.modal-fade-enter-active, .modal-fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.modal-fade-enter, .modal-fade-leave-to {
+  opacity: 0;
 }
 
 .modal-close-btn {

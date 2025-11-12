@@ -108,6 +108,7 @@ export default {
   width: 100%;
   scroll-snap-align: start;
   scroll-behavior: smooth;
+  z-index: 1;
   
   &::before {
     content: '';
