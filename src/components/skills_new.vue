@@ -796,10 +796,10 @@ export default {
   gap: 1.5rem;
   
   .skill-card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
+    border-radius: 0;
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
@@ -809,10 +809,10 @@ export default {
     cursor: pointer;
     
     &:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(102, 126, 234, 0.3);
+      background: transparent;
+      border-color: transparent;
       transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+      box-shadow: none;
     }
     
     .skill-icon-wrapper {
@@ -821,14 +821,14 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(102, 126, 234, 0.1);
-      border-radius: 12px;
+      background: transparent;
+      border-radius: 0;
       transition: all 0.3s ease;
     }
     
     &:hover .skill-icon-wrapper {
-      background: rgba(102, 126, 234, 0.2);
-      transform: scale(1.1);
+      background: transparent;
+      transform: scale(1.15);
     }
     
     .skill-icon-img {
