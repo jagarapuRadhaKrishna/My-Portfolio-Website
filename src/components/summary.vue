@@ -32,7 +32,7 @@
 
           <p class="intro-para mt-4"> 
             Crafting high-performance, scalable applications with expertise in 
-            <span class="tech-highlight">Java Spring Boot</span>, 
+            <span class="tech-highlight">Python</span>, 
             <span class="tech-highlight">Node.js</span>, 
             <span class="tech-highlight">React</span>, and 
             <span class="tech-highlight">Next.js</span>. 

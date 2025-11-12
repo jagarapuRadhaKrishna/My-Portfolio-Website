@@ -123,11 +123,8 @@ export default {
   data() {
     return {
       skills: [
-        // Icons Only - No Background Skills (First Section)
-        { name: 'Java', imageSrc: 'java_new', hasIcon: true, extension: 'svg' },
         { name: 'JavaScript', imageSrc: 'js', hasIcon: true, extension: 'png' },
         { name: 'Python', subtitle: '(ML, Scikit-learn, NumPy, Pandas, Matplotlib, Seaborn, Plotly)', imageSrc: 'python', hasIcon: true, extension: 'png' },
-        { name: 'Spring Boot', imageSrc: 'springboot', hasIcon: true, extension: 'svg' },
         { name: 'Node.js & Express.js', imageSrc: 'nodejs_express', hasIcon: true, extension: 'svg' },
         { name: 'HTML', imageSrc: 'html', hasIcon: true, extension: 'png' },
         { name: 'CSS', imageSrc: 'css', hasIcon: true, extension: 'png' },
@@ -135,13 +132,11 @@ export default {
         { name: 'MySQL', imageSrc: 'mysql', hasIcon: true, extension: 'svg' },
         { name: 'MongoDB', imageSrc: 'mongodb', hasIcon: true, extension: 'svg' },
         { name: 'SQL', imageSrc: 'sql', hasIcon: true, extension: 'svg' },
-        { name: 'NLP', subtitle: '(BERT, Word Segmentation)', imageSrc: 'nlp', hasIcon: true, extension: 'svg' },
         { name: 'Git', imageSrc: 'git', hasIcon: true, extension: 'png' },
-        
-        // Card Style Skills (Second Section)
-        { name: 'REST APIs', imageSrc: 'api', hasIcon: true, extension: 'png' },
-        { name: 'Data Structures & Algorithms (OOP)', imageSrc: 'dsa_oop', hasIcon: true, extension: 'svg' },
-        { name: 'System Design', imageSrc: 'system_design', hasIcon: true, extension: 'svg' }
+        { name: 'NLP', subtitle: '(BERT, Word Segmentation)', imageSrc: 'nlp', hasIcon: true, extension: 'svg' },
+        { name: 'REST APIs', imageSrc: 'rest_api_generated', hasIcon: true, extension: 'png' },
+        { name: 'Data Structures & Algorithms', imageSrc: 'dsa_generated', hasIcon: true, extension: 'png' },
+        { name: 'System Design', imageSrc: 'system_design_generated', hasIcon: true, extension: 'png' }
       ],
       showCertModal: false,
       currentCertificate: null,
@@ -793,9 +788,9 @@ export default {
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 140px));
-  gap: 3rem 2rem;
+  gap: 4rem 2.5rem;
   justify-content: center;
-  align-items: start;
+  align-items: center;
   
   .skill-card {
     background: transparent;
