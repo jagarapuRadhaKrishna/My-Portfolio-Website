@@ -27,16 +27,30 @@
               <span class="role-label">Full Stack Engineer</span>
               <span class="role-separator">•</span>
               <span class="role-label">AI Enthusiast</span>
+              <span class="role-separator">•</span>
+              <span class="role-label">Freelancer</span>
             </h2>
           </div>
 
           <p class="intro-para mt-4"> 
             Crafting high-performance, scalable applications with expertise in 
-            <span class="tech-highlight">Python</span>, 
+            <span class="tech-highlight">Python Django</span>, 
             <span class="tech-highlight">Node.js</span>, 
-            <span class="tech-highlight">React</span>, and 
-            <span class="tech-highlight">Next.js</span>. 
-            Building AI-powered solutions and delivering real-world impact through elegant, user-focused software.
+            <span class="tech-highlight">React</span>, 
+            <span class="tech-highlight">JavaScript (ES6+)</span>, 
+            <span class="tech-highlight">HTML/CSS</span>, 
+            <span class="tech-highlight">Bootstrap</span>, 
+            <span class="tech-highlight">Material UI</span>, 
+            <span class="tech-highlight">MySQL</span>, 
+            <span class="tech-highlight">MongoDB</span>, and 
+            <span class="tech-highlight">REST APIs</span>. 
+            Specializing in <span class="tech-highlight">Data Structures & Algorithms</span>, 
+            <span class="tech-highlight">System Design</span>, 
+            <span class="tech-highlight">Python Automations</span>, 
+            <span class="tech-highlight">ServiceNow</span>, and 
+            <span class="tech-highlight">IT Consultation</span>. 
+            Building AI-powered solutions with <span class="tech-highlight">Machine Learning</span> and 
+            <span class="tech-highlight">NLP</span> to deliver real-world impact through elegant, user-focused software.
           </p>
 
           <div class="stats-container">

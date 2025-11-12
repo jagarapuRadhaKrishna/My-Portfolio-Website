@@ -125,7 +125,7 @@ export default {
       skills: [
         { name: 'JavaScript (ES6+)', imageSrc: 'js', hasIcon: true, extension: 'png' },
         { name: 'Python', subtitle: '(ML, Scikit-learn, NumPy, Pandas, Matplotlib, Seaborn, Plotly)', imageSrc: 'python', hasIcon: true, extension: 'png' },
-        { name: 'Python Django', imageSrc: 'django_alt', hasIcon: true, extension: 'svg' },
+        { name: 'Python Django', imageSrc: 'django', hasIcon: true, extension: 'png' },
         { name: 'Node.js & Express.js', imageSrc: 'nodejs_express', hasIcon: true, extension: 'svg' },
         { name: 'React', imageSrc: 'react', hasIcon: true, extension: 'png' },
         { name: 'HTML', imageSrc: 'html', hasIcon: true, extension: 'png' },
@@ -138,7 +138,7 @@ export default {
         { name: 'SQL', imageSrc: 'sql', hasIcon: true, extension: 'svg' },
         { name: 'Git', imageSrc: 'git', hasIcon: true, extension: 'png' },
         { name: 'Python Automations', imageSrc: 'python_automation', hasIcon: true, extension: 'png' },
-        { name: 'ServiceNow', imageSrc: 'servicenow', hasIcon: true, extension: 'svg' },
+        { name: 'ServiceNow', imageSrc: 'servicenow', hasIcon: true, extension: 'png' },
         { name: 'IT Consultation', imageSrc: 'it_consultation', hasIcon: true, extension: 'png' },
         { name: 'NLP', subtitle: '(BERT, Word Segmentation)', imageSrc: 'nlp', hasIcon: true, extension: 'svg' },
         { name: 'REST APIs', imageSrc: 'rest_api_generated', hasIcon: true, extension: 'png' },
